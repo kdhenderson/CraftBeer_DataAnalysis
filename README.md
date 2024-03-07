@@ -15,7 +15,8 @@ This is a data analysis of craft beers and breweries in the United States, all 5
 * `README.md`: Readme file detailing purpose, contents and usage.
 * `Analysis_BeersAndBreweries.Rmd`: Rmarkdown file with introduction, questions to be addressed, all code to interact with the data and build the plots, written explanations, and conclusion.
 * `Analysis_BeersAndBreweries.html`: HTML file knitted with the above and with embedded data and visualizations.
-* `EDA_BeersAndBreweries.ppt`: Powerpoint slides with link to seven-minute YouTube video team presentation.
+* `Presentation_Final_Analysis`: Powerpoint slides for our final statistical analysis with link to seven-minute YouTube video team presentation.
+* `Presentation_Initial_EDA.ppt`: Powerpoint slides for our initial EDA presentation.
 
 ### Data directory containing the two data files.
 
