@@ -1,7 +1,7 @@
 ---
 title: "Statistical Analysis of Craft Beers and Breweries"
 author: "Willis Jones & Kristin Henderson"
-date: "2024-02-29"
+date: "Spring 2024"
 output: html_document
 ---
 
