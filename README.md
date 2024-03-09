@@ -20,7 +20,7 @@ This is a data analysis of craft beers and breweries in the United States, all 5
 
 ### Data directory containing the two data files.
 
-#### Codebook:
+#### Data dictionary:
 
 * `Beers.csv`: a dataset of US craft beers with 2410 observations of 7 variables.
   -	Name: Name of the beer.
@@ -37,12 +37,19 @@ This is a data analysis of craft beers and breweries in the United States, all 5
   -	City: City where the brewery is located.
   -	State: U.S. State where the brewery is located.
 
-In the code, these two datasets are imported and merged into a dataframe called `bbDF` by the unique identifier of the brewery, Brew_ID. `bbDF` includes all variables and observations from both datasets.
+
+#### Data transformation:
+
+Here are descriptions of the two primary dataframes used in the analysis.
+
+In the code, the two datasets (`Beers.csv` and `Breweries.csv`) are imported and merged into a dataframe called `bbDF` by the unique identifier of the brewery, Brew_ID. `bbDF` includes all variables and observations from both datasets. Prior to the merge, a variable `count` was added to the `breweries` dataframe, to enable finding the sum of breweries per state.
+
+A new dataframe `cleanDF` was created when imputing and cleaning missing data. A variable `medianIBU` was created, which held the median IBU value based on each unique style of beer. Missing values in the `IBU` variable were imputed with `medianIBU` values. The remaining missing `IBU` observations were deleted in this dataframe (those from styles with no data from which to compute medians). Missing `ABV` observations were also deleted in this dataframe. One other variable was added to this dataframe, `IBU_Profile`, to categorize styles into "IPA", "Ale", or "Other".
 
 
 ## Usage
 
 * Clone this repository
 `git clone https://github.com/kdhenderson/CraftBeer_DataAnalysis.git`
-* The files were created with RStudio version 2023.12.0+369.
+* The files were created with RStudio version 2023.12.0+369. (Machine: MacBook Pro, OS: macOS Monterey 12.7.1)
 * All required libraries are listed and loaded in the Rmarkdown file in one of the first code chunks.
