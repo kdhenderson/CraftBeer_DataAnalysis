@@ -302,7 +302,7 @@ cleanDF = imputedDF[!is.na(imputedDF$IBU), ]
 
 length(which(is.na(imputedDF$ABV)))
 length(which(is.na(imputedDF$ABV) & is.na(imputedDF$IBU)))
-#this confirms that if we impute ABV, it will be on 62 obs with imputed IBU
+#this above confirms that if we impute ABV, it will be on 62 obs with imputed IBU
 
 cleanDF = cleanDF[!is.na(cleanDF$ABV), ]
 ```
@@ -423,7 +423,7 @@ head(bbDF %>% arrange(desc(IBU), State, Brew_ID))
 
 
 ### Question 6: This finds summary statistics (values of the minimum, 25th percentile, median, 75th percentile, the maximum, plus the mean) for ABV. We also plot a histogram and boxplot to visualize the distribution.
-```{r question6}
+```{r question6, warning = FALSE}
 #6.	Comment on the summary statistics and distribution of the ABV variable.
 
 summaryStats = cleanDF %>% select(ABV, IBU, Ounces) %>%
@@ -490,7 +490,7 @@ ABV_dist
 
 
 ### Question 7: Here we generate a scatterplot of ABV and IBU with a linear regression line. Because we do not know which metric might be the independent versus the dependent variable, we chose to find the Pearson's correlation coefficient instead of running a linear regression.
-```{r question7}
+```{r question7, warning = FALSE, message = FALSE}
 #7.	Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot. Make your best judgment of a relationship and EXPLAIN your answer.
 
 #first do it removing the NAs (bbDF) for comparison
