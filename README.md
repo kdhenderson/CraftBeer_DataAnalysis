@@ -20,7 +20,13 @@ This is a data analysis of craft beers and breweries in the United States, all 5
 
 ### Data directory containing the two data files.
 
-#### Data dictionary:
+* `Beers.csv`
+* `Breweries.csv`
+
+
+## Codebook:
+
+### Data dictionary:
 
 * `Beers.csv`: a dataset of US craft beers with 2410 observations of 7 variables.
   -	Name: Name of the beer.
@@ -38,7 +44,7 @@ This is a data analysis of craft beers and breweries in the United States, all 5
   -	State: U.S. State where the brewery is located.
 
 
-#### Data transformation:
+### Data transformation:
 
 Here are descriptions of the two primary dataframes used in the analysis.
 
@@ -47,7 +53,7 @@ In the code, the two datasets (`Beers.csv` and `Breweries.csv`) are imported and
 A new dataframe `cleanDF` was created when imputing and cleaning missing data. A variable `medianIBU` was created, which held the median IBU value based on each unique style of beer. Missing values in the `IBU` variable were imputed with `medianIBU` values. The remaining missing `IBU` observations were deleted in this dataframe (those from styles with no data from which to compute medians). Missing `ABV` observations were also deleted in this dataframe. One other variable was added to this dataframe, `IBU_Profile`, to categorize styles into "IPA", "Ale", or "Other".
 
 
-## Usage
+### Usage
 
 * Clone this repository
 `git clone https://github.com/kdhenderson/CraftBeer_DataAnalysis.git`
