@@ -20,6 +20,8 @@ This is a data analysis of craft beers and breweries in the United States, all 5
 
 ### Data directory containing the two data files.
 
+#### Codebook:
+
 * `Beers.csv`: a dataset of US craft beers with 2410 observations of 7 variables.
   -	Name: Name of the beer.
   -	Beer_ID: Unique identifier of the beer.
