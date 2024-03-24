@@ -58,4 +58,4 @@ A new dataframe `cleanDF` was created when imputing and cleaning missing data. A
 * Clone this repository
 `git clone https://github.com/kdhenderson/CraftBeer_DataAnalysis.git`
 * The files were created with RStudio version 2023.12.0+369. (Machine: MacBook Pro, OS: macOS Monterey 12.7.1)
-* All required libraries are listed and loaded in the Rmarkdown file in one of the first code chunks.
+* All required libraries are listed and loaded in the Rmarkdown file in one of the first code chunks. If not already installed, run `install.packages("package_name")` substituting the needed package for `package_name`, prior to loading the libraries.

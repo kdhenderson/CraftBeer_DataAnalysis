@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 This data analysis of craft beers and breweries in the United States has three main objectives, to evaluate the number of craft breweries in each state, to provide summary statistics of craft beer metrics, and to investigate statistical relationships between these metrics. We aim to provide useful insight into the craft beer industry of value to executives of Budweiser.
 
 
-### This loads many of the libraries we will need for the analysis.
+#### This loads many of the libraries we will need for the analysis.
 ```{r echo = TRUE, results = 'hide', message = FALSE}
 #load libraries
 library(tidyverse)
@@ -35,7 +35,7 @@ library(covidcast) #state populations over 18 and abbv
 ```
 
 
-### This imports the data sets and allows us to quickly look over them.
+#### This imports the data sets and allows us to quickly look over them.
 ```{r}
 #import the data
 
@@ -49,7 +49,7 @@ head(breweries)
 ```
 
 
-### Question 1: Here we present how many breweries are in each state with two plots. One is a dot plot that ranks states in order from fewest to the most breweries. The second is a map of the U.S. with the number of breweries labeled on each state to make it easier to see regions with more breweries.
+#### Question 1: Here we present how many breweries are in each state with two plots. One is a dot plot that ranks states in order from fewest to the most breweries. The second is a map of the U.S. with the number of breweries labeled on each state to make it easier to see regions with more breweries.
 ```{r question1, message = FALSE}
 #1. How many breweries are in each state?
 breweries$count = 1
@@ -146,7 +146,7 @@ map_plt
 * Washington, DC, North and South Dakota, and West Virginia each have only one brewery.
 
 
-### Question 2: Here we merge the two data sets, breweries and beers, by the unique number associated with each brewery. The output of this prints the first and last 6 observations in the merged data frame.
+#### Question 2: Here we merge the two data sets, breweries and beers, by the unique number associated with each brewery. The output of this prints the first and last 6 observations in the merged data frame.
 ```{r question2}
 #2.	Merge beer data with the breweries data. Print the first 6 observations and the last six observations to check the merged file.  (RMD only, this does not need to be included in the presentation or the deck.)
 
@@ -159,7 +159,7 @@ tail(bbDF)
 ```
 
 
-### Question 3: Here we find the missing values in the dataset and investigate the reason they may be missing and the category of missing values that are in.
+#### Question 3: Here we find the missing values in the dataset, investigate the reason they may be missing, and categorize them into missing completely at random, missing at random or not missing at random.
 ```{r question3a, warning = FALSE}
 #3. Address the missing values in each column.
 
@@ -173,7 +173,7 @@ tail(bbDF)
 bbDF[bbDF == ""] = NA
 
 #this finds the number and percent of missing values in each variable
-miss_data <- bbDF %>% 
+miss_data = bbDF %>% 
   gather(key, value) %>%
   group_by(key) %>%
   count(na = is.na(value)) %>% 
@@ -264,7 +264,7 @@ Certain beer styles, such as Cider, American Malt Liquor, Mead, and Shandy, lack
 Additionally, a report in the Journal of Food Engineering (https://doi.org/10.1016/j.jfoodeng.2019.05.015),  highlights the high cost of measuring IBU, possibly contributing to its absence in many cases. This suggests that the data might be missing at random (MAR) rather than not missing at random (NMAR). Even when grouping styles into IPA and others, the differences in missing IBU percentages (31.3% and 43.3% respectively) weren't substantial. Examining covariates didn't reveal a single factor responsible for missing IBU scores. For these reasons, we decided to the best way to deal with the missing IBU and ABV values would be imputing them with the median value of the categorical predictor Style.
 
 
-### Question 3b: Given our determination that IBU values are missing at random (MAR), here we impute missing IBU values with the median IBU for each beer style, resulting in 953 imputed values. There were nine beer styles with all IBUs missing, representing 52 instances of mostly ciders or <2.2% of the data. We chose not to impute values to avoid introducing bias, restricting our findings instead to the 91 remaining styles with available data. Regarding missing ABV values, all 62 instances coincided with missing IBU values. Since this represented <2.6% of the dataset, we opted to delete these entries rather than impute values, leaving us with 2296 beers for analysis, retaining over 95% of the original dataset.
+#### Question 3b: Given our determination that IBU values are missing at random (MAR), here we impute missing IBU values with the median IBU for each beer style, resulting in 953 imputed values. There were nine beer styles with all IBUs missing, representing 52 instances of mostly ciders or < 2.2% of the data. We chose not to impute values to avoid introducing bias, restricting our findings instead to the 91 remaining styles with available data. Regarding missing ABV values, all 62 instances coincided with missing IBU values. Since this represented < 2.6% of the dataset, we opted to delete these entries rather than impute values, leaving us with 2296 beers for analysis, retaining over 95% of the original dataset.
 ```{r question3b}
 #deal with the missing values by imputation of the median by style 
 #IBU is right skewed so median maybe better than mean
@@ -308,7 +308,7 @@ cleanDF = cleanDF[!is.na(cleanDF$ABV), ]
 ```
 
 
-### Question 4: This computes the median alcohol by volume (ABV) and international bitterness unit (IBU) for each state. We output the sorted state medians to view the numbers. Then we generated a bar chart with IBU on the left Y axis in blue and ABV on the right Y axis in red. Each state has the bars overlaid for each metric. 
+#### Question 4: This computes the median alcohol by volume (ABV) and international bitterness unit (IBU) for each state. We output the sorted state medians to view the numbers. Then we generated a bar chart with IBU on the left Y axis in blue and ABV on the right Y axis in red. Each state has the bars overlaid for each metric. 
 ```{r question4, warning=FALSE}
 #4.	Compute the median alcohol content and international bitterness unit for each state. Plot a bar chart to compare.
 
@@ -410,7 +410,7 @@ overlaidMediansImp_plt
 * WV is high in both categories.
 
 
-### Question 5: This finds the beer with the highest ABV and the beer with the highest IBU.
+#### Question 5: This finds the beer with the highest ABV and the beer with the highest IBU.
 ```{r question5}
 #5.	Which state has the maximum alcoholic (ABV) beer? Which state has the most bitter (IBU) beer?
 
@@ -422,7 +422,7 @@ head(bbDF %>% arrange(desc(IBU), State, Brew_ID))
 * The most bitter beer overall is in Oregon. It is Astoria Brewing Company's Bitter Bitch Imperial IPA with a IBU of 138.
 
 
-### Question 6: This finds summary statistics (values of the minimum, 25th percentile, median, 75th percentile, the maximum, plus the mean) for ABV. We also plot a histogram and boxplot to visualize the distribution.
+#### Question 6: This finds summary statistics (values of the minimum, 25th percentile, median, 75th percentile, the maximum, plus the mean) for ABV. We also plot a histogram and boxplot to visualize the distribution.
 ```{r question6, warning = FALSE}
 #6.	Comment on the summary statistics and distribution of the ABV variable.
 
@@ -489,7 +489,7 @@ ABV_dist
 * Half of the beers fall in the 5.0 - 6.7 percent alcohol range.
 
 
-### Question 7: Here we generate a scatterplot of ABV and IBU with a linear regression line. Because we do not know which metric might be the independent versus the dependent variable, we chose to find the Pearson's correlation coefficient instead of running a linear regression.
+#### Question 7: Here we generate a scatterplot of ABV and IBU with a linear regression line. Because we do not know which metric might be the independent versus the dependent variable, we chose to find the Pearson's correlation coefficient instead of running a linear regression.
 ```{r question7, warning = FALSE, message = FALSE}
 #7.	Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot. Make your best judgment of a relationship and EXPLAIN your answer.
 
@@ -555,7 +555,7 @@ cat("Number of Complete Cases:", sum(complete.cases(cleanDF)), "\n") #two are co
 After imputation of IBU by style, of the 2410 beers, 2296 had ABV and IBU data. In these complete cases, there is evidence of a positive relationship between ABV and IBU. The correlation coefficient is 0.59 with a 95% confidence interval (0.56, 0.62). If we were to remove rather than impute missing IBU values, the correlation coefficient is a little higher, 0.67. However, we feel the imputed data is likely a more accurate reflection of the data and still shows evidence of a positive relationship between ABV and IBU values.
 
 
-### Question 8: Here we filter the dataset to examine only IPAs and Ales. Then, we use KNN classification to provide statistical evidence assessing if beers can be classified into Style, IPA or Ale, based on their ABV and IBU values. 
+#### Question 8: Here we filter the dataset to examine only IPAs and Ales. Then, we use KNN classification to provide statistical evidence assessing if beers can be classified into Style, IPA or Ale, based on their ABV and IBU values. 
 ```{r question8a}
 #8 (part 1).	Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).
 
@@ -656,7 +656,7 @@ cls_exPlt
 A k-NN classifier uses a majority rule approach to predict the classification of unknown data points based on the classifications of a defined number of known data points. After tuning the number of neighbors (k), we tested two cross-validation schemes: external and internal. Both the external and internal cross-validation models performed similarly very well. The external model achieves a 88.6% accuracy, 89.4% sensitivity, and 87.4% specificity when using 16 neighbors. Having a 95% confidence interval of (85.3%, 91.4%), the accuracy of the model significantly exceeds the accuracy expected by chance alone (p-value, <2e-16). Based on our model's sensitivity and specificity, we correctly classify 89.4% of Ales and 87.4% of IPAs. In short, the model was very accurate and predicted both true positives and true negatives with a high probability.
 
 
-### Question 8b. Next, we generate a Naive bayes classifier and compare its performance with that of the k-NN model.
+#### Question 8b. Next, we generate a Naive bayes classifier and compare its performance with that of the k-NN model.
 ```{r question8b}
 #part 2: compare a naive bayes classifier
 
@@ -749,7 +749,7 @@ allModels %>% gt()
 The Naive Bayes classifier predicted classifications with an accuracy significantly above chance level (p-value, 6.70e-23), however it performed slightly worse than either of the k-NN models. It only achieved an accuracy of 87.4%, sensitivity of 89.3% and specificity of 84.2%.
 
 
-### Question 9: Here we look at clusters of states based on their breweries per capita where there where the market might have room for expansion. Then we find the top 10 styles of craft beers in the US overall. We examined if those states were missing popular beer styles and what most produced 2 styles each one of those states might want to introduce. We did utilize generative AI for help with the coding on this one.
+#### Question 9: Here we look at clusters of states based on their breweries per capita where the market might have room for expansion. Then we find the top 10 styles of craft beers in the U.S. overall. We examined if those states were missing popular beer styles and what most produced 2 styles each one of those states might want to introduce. We did utilize generative AI for help with the coding on this one.
 ```{r question9, message = FALSE}
 #Find one other useful inference from the data and back it up with statistical evidence.
 
