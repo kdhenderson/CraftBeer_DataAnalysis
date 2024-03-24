@@ -24,9 +24,9 @@ This is a data analysis of craft beers and breweries in the United States, all 5
 * `Breweries.csv`
 
 
-## Codebook:
+## Codebook
 
-### Data dictionary:
+### Data dictionary
 
 * `Beers.csv`: a dataset of US craft beers with 2410 observations of 7 variables.
   -	Name: Name of the beer.
@@ -44,7 +44,7 @@ This is a data analysis of craft beers and breweries in the United States, all 5
   -	State: U.S. State where the brewery is located.
 
 
-### Data transformation:
+### Data transformation
 
 Here are descriptions of the two primary dataframes used in the analysis.
 
