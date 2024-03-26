@@ -142,7 +142,7 @@ map_plt
 #ggsave(map_plt, filename = "plots/map_plt.png")
 ```
 * Colorado has the most breweries with 47.
-* In addition to Colorado, the regions with a lot of breweries include Texas, the west coast and the states around the Great Lakes.
+* In addition to Colorado, the regions with a lot of breweries include Texas, the West Coast and the states around the Great Lakes.
 * Washington, DC, North and South Dakota, and West Virginia each have only one brewery.
 
 
